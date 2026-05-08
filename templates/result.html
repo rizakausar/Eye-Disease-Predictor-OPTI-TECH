@@ -1,0 +1,66 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8"><title>Result</title>
+  <style>
+    body { 
+      background: url('/static/eye-image4.jpg') center/cover; 
+      background-color: rgba(0,0,0,0.6); 
+      background-blend-mode: darken; 
+      height: 100vh; 
+      display: flex; 
+      flex-direction: column; 
+      justify-content: center; 
+      align-items: center; 
+      color: white; 
+      font-family: sans-serif; }
+
+    .result-box { 
+      background: rgba(255,255,255,0.12); 
+      padding: 30px; 
+      border-radius: 20px; 
+      text-align: center; 
+      width: 500px; 
+      backdrop-filter: blur(10px); }
+
+    .uploaded-img { 
+      width: 220px; 
+      border-radius: 10px; 
+      margin-bottom: 15px; 
+      border: 2px solid #00bcd4; }
+
+    .highlight { 
+      font-size: 1.8rem; 
+      color: #00fff5; 
+      font-weight: bold; }
+
+    .sol-box { 
+      background: rgba(0,0,0,0.4); 
+      padding: 15px; 
+      border-radius: 10px; 
+      margin: 15px 0; }
+      
+    button { 
+      margin: 5px; 
+      padding: 10px 15px; 
+      background: #00bcd4; 
+      border: none; 
+      border-radius: 5px; 
+      color: white; 
+      cursor: pointer; 
+      font-weight: bold; }
+  </style>
+</head> 
+<body>
+  <h1>Opti-Tech</h1>
+  <div class="result-box">
+    <img src="/static/uploads/{{ request.args.get('img') }}" class="uploaded-img">
+    <h2>Result: <span class="highlight">{{ request.args.get('disease') }}</span></h2>
+    <p>Accuracy: {{ request.args.get('confidence') }}</p>
+    <div class="sol-box"><strong>Cure:</strong><br>{{ solution }}</div>
+    <button onclick="window.location.href='/database'">Records</button>
+    <button onclick="window.location.href='/upload'">Try Another</button>
+    <button style="background:#ff5252" onclick="window.location.href='/logout'">Back to Login</button>
+  </div>
+</body>
+</html>

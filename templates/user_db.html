@@ -1,0 +1,79 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Patient Files</title>
+    <style>
+        body { 
+            background: #0b0b0b; 
+            color: white; 
+            font-family: sans-serif; 
+            padding: 30px; }
+        .header { 
+            display: flex; 
+            justify-content: space-between; 
+            align-items: center; 
+            margin-bottom: 20px; }
+        table { 
+            width: 100%; 
+            border-collapse: collapse; 
+            background: #1a1a1a; 
+            margin-top: 20px; }
+        th, td { 
+            border: 1px solid #333; 
+            padding: 15px; 
+            text-align: center; }
+        th { 
+            background: #00bcd4; 
+            color: black; }
+        .nav-btn { 
+            background: #00bcd4; 
+            color: white; 
+            padding: 10px 20px; 
+            text-decoration: none; 
+            border-radius: 5px; }
+        .del-btn { 
+            background: #ff4444; 
+            color: white; 
+            padding: 8px 12px; 
+            border-radius: 5px; 
+            text-decoration: none; 
+            font-size: 13px; }
+        .logout-btn { 
+            background: #ba0606; }
+    </style>
+</head>
+<body>
+    <div class="header">
+        <a href="{{ url_for('upload_page') }}" class="nav-btn">⬅ Back to Upload</a>
+        <a href="{{ url_for('logout') }}" class="nav-btn logout-btn">🚪 Back to Login</a>
+    </div>
+
+    <h2>File Records for {{ current_user.username }}</h2>
+    <table>
+        <thead>
+            <tr>
+                <th>SL.No</th>
+                <th>Date</th>
+                <th>Time</th>
+                <th>Disease</th>
+                <th>Confidence</th>
+                <th>Action</th>
+            </tr>
+        </thead>
+        <tbody>
+            {% for r in records %}
+            <tr>
+                <td>{{ loop.index }}</td>
+                <td>{{ r.timestamp.strftime('%Y-%m-%d') }}</td>
+                <td>{{ r.timestamp.strftime('%I:%M %p') }}</td>
+                <td>{{ r.disease }}</td>
+                <td>{{ r.confidence }}</td>
+                <td>
+                    <a href="{{ url_for('delete_record', rid=r.id) }}" class="del-btn" onclick="return confirm('Delete this record?')">Delete</a>
+                </td>
+            </tr>
+            {% endfor %}
+        </tbody>
+    </table>
+</body>
+</html>

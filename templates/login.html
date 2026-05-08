@@ -1,0 +1,84 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <title>Opti-Tech - Login</title>
+  <style>
+    body { margin: 0; 
+      height: 100vh; 
+      background: url("/static/eye-image4.jpg") no-repeat center/cover; 
+      font-family: 'Times New Roman', serif; 
+      display: flex; 
+      flex-direction: column; 
+      justify-content: center; 
+      align-items: center; 
+      position: relative; }
+
+    body::before { 
+      content: ""; 
+      position: absolute; 
+      width: 100%; 
+      height: 100%; 
+      background: rgba(0, 0, 0, 0.5); 
+      z-index: 1; }
+
+    h1 { 
+      position: absolute; 
+      top: 40px; 
+      color: #00e5ff; 
+      font-size: 50px; 
+      text-shadow: 0 0 25px #00bcd4; 
+      z-index: 2; 
+      text-transform: uppercase; 
+      letter-spacing: 5px; }
+
+    .login-box { 
+      position: relative; 
+      z-index: 2; 
+      background: rgba(255, 255, 255, 0.15); 
+      padding: 35px; 
+      border-radius: 20px; 
+      width: 380px; 
+      text-align: center; 
+      color: white; 
+      backdrop-filter: blur(10px); 
+      border: 1px solid rgba(255, 255, 255, 0.2); }
+
+    input { 
+      width: 90%; 
+      padding: 12px; 
+      margin: 10px 0; 
+      border-radius: 25px; 
+      border: none; 
+      background: rgba(244, 232, 232, 0.85); 
+      color: black; 
+      outline: none; }
+
+    button { 
+      width: 95%; 
+      padding: 12px; 
+      margin-top: 15px; 
+      border: none; 
+      border-radius: 25px; 
+      background: #06a5ba; 
+      color: white; 
+      cursor: pointer; 
+      font-weight: bold; 
+      font-size: 16px; }
+      
+  </style>
+</head>
+<body>
+  <h1>OPTI-TECH</h1>
+  <div class="login-box">
+    <h2>LOGIN</h2>
+    <form method="POST">
+      <input type="text" name="username" placeholder="Username" required>
+      <input type="email" name="email" placeholder="Email" required>
+      <input type="password" name="password" placeholder="Password" required>
+      <input type="password" name="confirm_password" placeholder="Confirm Password " required>
+      <button type="submit">PROCEED</button>
+    </form>
+  </div>
+</body>
+</html>
